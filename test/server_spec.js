@@ -15,19 +15,6 @@ describe('server', function() {
       console.log('collection dropped');
     });
   });
-  // beforeEach(function(done) {
-  //   let testProperty = {
-  //     email: 'test@example.com',
-  //     imageUrl: 'https://testUrl.com'
-  //   };
-  //   request = chai.request(app);
-  //   return request
-  //     .post('/properties')
-  //     .send(testProperty)
-  //     .end(function(err, res) {
-  //       done();
-  //     });
-  // });
   describe('POST /properties', function() {
     it('posts to the database', function(done) {
       let testProperty = {
