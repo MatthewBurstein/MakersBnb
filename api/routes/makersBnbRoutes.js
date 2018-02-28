@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(app) {
   var makersBnb = require('../controllers/makersBnbController');
-  // var index = require('../index.html');
+  // var index = require('../../index.js');
 
   // todoList Routes
   app
@@ -14,9 +14,5 @@ module.exports = function(app) {
   //   .get(todoList.read_a_task)
   //   .put(todoList.update_a_task)
   //   .delete(todoList.delete_a_task);
-  app.get('/', function(req, res) {
-    res.sendFile(
-      '/Users/danielkeen/Projects/week_6/React/MakersBnb/index.html'
-    );
-  });
+  app.route('/').get(makersBnb.load_html);
 };

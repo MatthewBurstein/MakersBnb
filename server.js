@@ -1,3 +1,4 @@
+// var path = require('path');
 var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost/makersBnbdb');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// app.use(express.static(path.join(__dirname, 'public')));
 
 var routes = require('./api/routes/makersBnbRoutes'); //importing route
 routes(app); //register the route

@@ -17,6 +17,10 @@ exports.create_a_property = function(req, res) {
     res.json(property);
   });
 };
+
+exports.load_html = function(req, res) {
+  res.sendFile('/Users/danielkeen/Projects/week_6/React/MakersBnb/index.html');
+};
 //
 // exports.read_a_task = function(req, res) {
 //   Task.findById(req.params.taskId, function(err, task) {
