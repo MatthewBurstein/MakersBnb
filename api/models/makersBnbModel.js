@@ -3,6 +3,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PropertySchema = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId
+  },
   imageUrl: {
     type: String,
     required: 'Please provide a link to your property image'
