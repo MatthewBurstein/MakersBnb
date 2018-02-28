@@ -2,12 +2,13 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Task = require('./api/models/makersBnbModel'), //created model loading here
+  Property = require('./api/models/makersBnbModel'), //created model loading here
   bodyParser = require('body-parser');
+  config = require('config');
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/makersBnbdb');
+mongoose.connect(config.DBHost);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
