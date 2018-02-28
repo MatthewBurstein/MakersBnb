@@ -6,15 +6,21 @@
   "scripts": {
     "test": "mocha",
     "start": "NODE_ENV=dev && nodemon server.js",
-    "dev":
-      "./node_modules/.bin/webpack-dev-server --config ./webpack/webpack.dev.config.js",
+    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack/webpack.dev.config.js",
     "dev-client": "webpack-dev-server "
   },
   "author": "",
   "license": "ISC",
   "babel": {
-    "presets": ["es2015", "env", "react", "stage-0"],
-    "plugins": ["transform-object-rest-spread"]
+    "presets": [
+      "es2015",
+      "env",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

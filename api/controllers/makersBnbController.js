@@ -12,11 +12,8 @@ exports.list_all_properties = function(req, res) {
 
 exports.create_a_property = function(req, res) {
   var new_property = new Property(req.body);
-  console.log("new_property: ", new_property)
   new_property.save(function(err, property) {
-    console.log("err.stack: ", err.stack)
     if (err) res.send(err);
-    console.log("property: ", property)
     res.json(property);
   });
 };

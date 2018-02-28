@@ -9,7 +9,7 @@ var expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('server', function() {
-  describe('/properties', function() {
+  describe('GET /properties', function() {
     it('responds with status 200', function(done) {
       chai.request(app)
         .get('/properties')
@@ -19,16 +19,19 @@ describe('server', function() {
         });
     });
 
-    it('responds with the correct data', function() {
+    it('responds with the correct data', function(done) {
       chai.request(app)
         .get('/properties')
         .end(function(err, res) {
+          console.log(res.body)
           expect(res.body[0].email).to.equal('test@example.com');
           done();
         });
     });
+  });
 
-    it('posts to the database', function() {
+  describe('POST /properties', function() {
+    it('posts to the database', function(done) {
       let testProperty = {
         email: "jenny@test.com",
         imageUrl: "https://testUrl.com"
@@ -37,9 +40,10 @@ describe('server', function() {
         .post('/properties')
         .send(testProperty)
         .end(function(err, res) {
-          expect(res.body[0].email).to.equal('jenny@test.com');
+          console.log(res)
+          expect(res.body.email).to.equal('jenny@test.com');
           done();
         });
-    })
+    });
   });
 });

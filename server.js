@@ -5,7 +5,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Property = require('./api/models/makersBnbModel'), //created model loading here
   bodyParser = require('body-parser'),
-  config;
+  dbConfig;
   if (process.env.NODE_ENV === 'test') {
     dbConfig = "mongodb://localhost/makersBnbdb_test"
   } else {
@@ -15,7 +15,6 @@ var express = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig);
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
