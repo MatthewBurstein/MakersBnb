@@ -1,5 +1,5 @@
 'use strict';
-
+var path = require('path');
 var mongoose = require('mongoose'),
   Property = mongoose.model('Properties');
 
@@ -19,7 +19,7 @@ exports.create_a_property = function(req, res) {
 };
 
 exports.load_html = function(req, res) {
-  res.sendFile('/Users/danielkeen/Projects/week_6/React/MakersBnb/index.html');
+  res.sendFile(path.resolve(__dirname, '..', '..', 'index.html'));
 };
 //
 // exports.read_a_task = function(req, res) {
