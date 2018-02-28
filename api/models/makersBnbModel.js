@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 
 var PropertySchema = new Schema({
   _id: {
-    type: Schema.Types.ObjectId
+    type: Schema.Types.ObjectId,
+    auto: true
   },
   imageUrl: {
     type: String,

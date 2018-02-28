@@ -13,7 +13,6 @@ describe('server', function() {
         .get('/properties')
         .end(function(err, res) {
           expect(res).to.have.status(200);
-          console.log(res)
           done();
         });
     });
@@ -22,11 +21,23 @@ describe('server', function() {
       chai.request(app)
         .get('/properties')
         .end(function(err, res) {
-          expect(res).to.have.status(200);
-          console.log(res)
+          expect(res.body[0].email).to.equal('test@example.com');
           done();
         });
-      });
+    });
+
+    it('posts to the database', function() {
+      let testProperty = {
+        email: "jenny@test.com",
+        imageUrl: "https://testUrl.com"
+      }
+      chai.request(app)
+        .post('/properties')
+        .send(testProperty)
+        .end(function(err, res) {
+          expect(res.body[0].email).to.equal('jenny@test.com');
+          done();
+        });
     })
   });
 });
