@@ -1,5 +1,5 @@
 'use strict';
-
+var path = require('path');
 var mongoose = require('mongoose'),
   Property = mongoose.model('Properties');
 
@@ -19,6 +19,10 @@ exports.create_a_property = function(req, res) {
     console.log("property: ", property)
     res.json(property);
   });
+};
+
+exports.load_html = function(req, res) {
+  res.sendFile(path.resolve(__dirname, '..', '..', 'index.html'));
 };
 //
 // exports.read_a_task = function(req, res) {
