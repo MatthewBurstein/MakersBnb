@@ -4,12 +4,17 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Property = require('./api/models/makersBnbModel'), //created model loading here
-  bodyParser = require('body-parser');
-  config = require('config');
+  bodyParser = require('body-parser'),
+  config;
+  if (process.env.NODE_ENV === 'test') {
+    dbConfig = "mongodb://localhost/makersBnbdb_test"
+  } else {
+    dbConfig = "mongodb://localhost/makersBnbdb"
+  };
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect(config.DBHost);
+mongoose.connect(dbConfig);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
