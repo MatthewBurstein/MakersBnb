@@ -1,3 +1,4 @@
+var path = require('path');
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
@@ -9,28 +10,24 @@ var expect = chai.expect;
 
 chai.use(chaiHttp);
 
+const Fixtures = require('node-mongodb-fixtures');
+const fixtures = new Fixtures({
+  dir: path.resolve(__dirname, 'fixtures')
+});
+
+
+console.log(fixtures)
+
+
+
 describe('server', function() {
-  before(function() {
-    mongoose.connection.collections['properties'].drop(function(err) {
-      console.log('collection dropped');
-    });
-  });
-  describe('POST /properties', function() {
-    it('posts to the database', function(done) {
-      let testProperty = {
-        email: 'jenny@test.com',
-        imageUrl: 'https://testUrl.com'
-      };
-      chai
-        .request(app)
-        .post('/properties')
-        .send(testProperty)
-        .end(function(err, res) {
-          // console.log(res);
-          expect(res.body.email).to.equal('jenny@test.com');
-          done();
-        });
-    });
+
+  before( function() {
+    fixtures.connect('mongodb://localhost/makersBnbdb_test')
+      .unload()
+      .then(function() { fixtures.load() })
+      .catch(function(e) { console.log("Error caught in database loading: ", e) })
+      // .finally(function() { fixtures.disconnect() });
   });
 
   describe('GET /properties', function() {
@@ -45,12 +42,31 @@ describe('server', function() {
     });
 
     it('responds with the correct data', function(done) {
+      setTimeout(function() {
+        chai
+          .request(app)
+          .get('/properties')
+          .end(function(err, res) {
+            console.log(res.body)
+            expect(res.body[0].email).to.equal('fixture-test@example.com');
+            done();
+          });
+        }, 1500)
+    });
+  });
+
+  describe('POST /properties', function() {
+    it('posts to the database', function(done) {
+      let testProperty = {
+        email: 'jenny@test.com',
+        imageUrl: 'https://testUrl.com'
+      };
       chai
         .request(app)
-        .get('/properties')
+        .post('/properties')
+        .send(testProperty)
         .end(function(err, res) {
-          console.log(res.body);
-          expect(res.body[0].email).to.equal('jenny@test.com');
+          expect(res.body.email).to.equal('jenny@test.com');
           done();
         });
     });
