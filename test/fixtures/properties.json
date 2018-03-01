@@ -1,0 +1,6 @@
+[{ "url": "http://fixture-test.com",
+   "email": "fixture-test@example.com"
+   },
+ { "url": "https://another-fixture-test.com",
+   "email": "another-fixture-test@example.com"
+   }]
