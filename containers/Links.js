@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-export default class Test extends Component {
+export default class Links extends Component {
 
   constructor() {
     super();
