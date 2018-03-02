@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
-export default class App extends Component {
+export default class Test extends Component {
   render() {
-    return <h2>Welcome!!!</h2>;
+    return (
+      <div>
+        <h2>Welcome!!!</h2>
+        <h3>makers!</h3>
+      </div>
+    );
   }
 }
