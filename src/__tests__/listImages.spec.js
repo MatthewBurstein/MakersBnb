@@ -13,8 +13,14 @@ it('renders without crashing', () => {
   ReactDOM.render(<Links />, div);
 });
 
-it ('renders a message'), () => {
+it('renders a message', () => {
   const wrapper = shallow(<Links />);
-  const message = <h1> This is the list of properties in MakersBnb</h1>;
+  const message = <h1>This is the list of properties in MakersBnb</h1>;
   expect(wrapper).toContainReact(message);
+});
+
+it('shows an image from the database', () => {
+  const wrapper = shallow(<Links />);
+  const image = <img src="https://img00.deviantart.net/c73f/i/2014/001/7/7/magic_house_by_tinca2-d70b7x2.jpg"/>;
+  expect(wrapper).toContainReact(image);
 });
