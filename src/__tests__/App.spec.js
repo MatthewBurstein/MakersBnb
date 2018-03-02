@@ -10,7 +10,6 @@ Enzyme.configure({ adapter: new Adapter() });
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Test />, div);
-  // ReactDOM.unmountComponentAtNode(div);
 });
 
 it('renders welcome message', () => {
